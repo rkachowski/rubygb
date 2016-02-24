@@ -5,16 +5,16 @@ Bundles the [rgbds-linux](https://github.com/bentley/rgbds) compiler (for OSX) a
 
 ## Setup
 
-Add to your `Gemfile`:
+Install from rubygems
 
 ```ruby
-gem 'rubygb'
+gem install rubygb
 ```
-
 
 ## Usage
 
 ```ruby
+rubygb build FILENAME
 ```
 
 ## Awesomeness
