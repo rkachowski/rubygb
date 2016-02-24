@@ -18,4 +18,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.required_ruby_version = "~> 2.0"
+  gem.add_runtime_dependency "thor", "~> 0.19"
 end
