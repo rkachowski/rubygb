@@ -2,4 +2,4 @@
 
 require 'rubygb'
 
-Rubygb::CLI.run!
+Rubygb::CLI.start ARGV
