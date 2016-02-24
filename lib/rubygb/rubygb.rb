@@ -4,11 +4,12 @@ module Rubygb
       raise "Fatal: can't find #{filename}"
     end
 
-    base = File.basename(filename)
+    base = File.basename(filename, ".*")
 
-    `rgbasm -v -o#{base}.obj #{filename}`
-    `rgblink -m#{base}.map -n#{base}.sym -o#{base}.gb #{base}.obj`
-    `rgbfix -p0 -v #{base}.gb`
+    exe_path = File.expand_path(File.join(File.dirname(__FILE__),"..","rgbds"))
+    puts `#{exe_path}/rgbasm -v -o#{base}.obj #{filename}`
+    puts `#{exe_path}/rgblink -m#{base}.map -n#{base}.sym -o#{base}.gb #{base}.obj`
+    puts `#{exe_path}/rgbfix -p0 -v #{base}.gb`
   end
 end
 

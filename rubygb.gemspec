@@ -5,8 +5,8 @@ require File.dirname(__FILE__) + "/lib/rubygb/version"
 Gem::Specification.new do |gem|
   gem.name          = "rubygb"
   gem.version       = Rubygb::VERSION
-  gem.summary       = "TODO"
-  gem.description   = "TODO"
+  gem.summary       = "Create gameboy roms on osx"
+  gem.description   = "A stupid gem that comes bundled with an osx compatible version of rgbds"
   gem.authors       = ["Donald Hutchison"]
   gem.email         = ["git@toastymofo.net"]
   gem.homepage      = "https://github.com/rkachowski/rubygb"
