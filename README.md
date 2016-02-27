@@ -13,9 +13,27 @@ gem install rubygb
 
 ## Usage
 
-```ruby
-rubygb build FILENAME
 ```
+$ rubygb init you
+Creating new project at /Users/cooldev/you
+Copying gbhw.inc...
+Copying ibmpx1.inc...
+Copying memory.inc...
+Generating you/you.s...
+Done!
+
+$ cd you
+
+$ rubygb build you.s
+Assembling you.s
+Pass 1...
+Pass 2...
+Success! 3283 lines in 0.01 seconds (13894335 lines/minute)
+
+$ gameboyemulator --open you.gb
+```
+
+![despite everything, it's still you](wiki-images/you.gif)
 
 ## Awesomeness
 
