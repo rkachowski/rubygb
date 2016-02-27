@@ -37,7 +37,6 @@ INCLUDE "lib/memory.inc"; memory copying macros
 TileData:
   chr_IBMPC1 1,8 ; LOAD ENTIRE CHARACTER SET
 
-
 ; initialization
 begin:
   nop

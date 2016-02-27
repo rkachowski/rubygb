@@ -20,13 +20,16 @@ module Rubygb
       galp_lib = File.expand_path(File.join(File.dirname(__FILE__),"..","galp"))
 
       Dir.glob(File.join(galp_lib,"*")) do |file|
-        puts "copying #{File.basename(file)}..."
+        puts "Copying #{File.basename(file)}..."
         FileUtils.copy file, galp_dest
       end
 
       template = Template.basic(project_name)
+      filename = File.join(project_name,"#{project_name}.s")
+      puts "Generating #{filename}..."
+      File.open(filename,"w") {|f| f << template}
 
-      File.open(File.join(project_name,"#{project_name}.s"),"w") {|f| f << template}
+      puts "Done!"
     end
   end
 end
