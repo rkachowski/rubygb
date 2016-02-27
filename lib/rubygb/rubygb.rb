@@ -5,11 +5,14 @@ module Rubygb
     end
 
     base = File.basename(filename, ".*")
-
     exe_path = File.expand_path(File.join(File.dirname(__FILE__),"..","rgbds"))
-    puts `#{exe_path}/rgbasm -v -o#{base}.obj #{filename}`
-    puts `#{exe_path}/rgblink -m#{base}.map -n#{base}.sym -o#{base}.gb #{base}.obj`
-    puts `#{exe_path}/rgbfix -p0 -v #{base}.gb` unless options[:no_fix]
+
+    raise "Assembly failed!" unless system("#{exe_path}/rgbasm -v -o#{base}.obj #{filename}")
+    raise "Link failed!" unless system("#{exe_path}/rgblink -m#{base}.map -n#{base}.sym -o#{base}.gb #{base}.obj")
+
+    unless options[:no_fix]
+      raise "Header fix failed!" unless system("#{exe_path}/rgbfix -p0 -v #{base}.gb")
+    end
   end
 end
 
