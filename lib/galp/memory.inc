@@ -11,15 +11,7 @@
         IF      !DEF(MEMORY1_ASM)
 MEMORY1_ASM  SET  1
 
-rev_Check_memory1_asm: MACRO
-;NOTE: REVISION NUMBER CHANGES MUST BE ADDED
-;TO SECOND PARAMETER IN FOLLOWING LINE.
-        IF      \1 > 1.0      ; <---- NOTE!!! PUT FILE REVISION NUMBER HERE
-        WARN    "Version \1 or later of 'memory.asm' is required."
-        ENDC
-        ENDM
 
-        INCLUDE "gbhw.inc"
 
 ; Macro that pauses until VRAM available.
 
