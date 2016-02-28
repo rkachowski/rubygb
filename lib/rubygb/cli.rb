@@ -1,6 +1,6 @@
 require 'thor'
 require 'fileutils'
-require 'pry-byebug'
+
 module Rubygb
   class CLI < Thor
     desc 'build FILENAME', 'attempt to assemble, link + fix FILENAME and create a gb rom from it'
