@@ -7,7 +7,7 @@ module Rubygb
 ; TODO: summary
 
 INCLUDE "lib/gbhw.inc" ; gameboy hardware definitions
-INCLUDE "lib/ibmpx1.inc" ; ibm ascii font macros
+INCLUDE "lib/ibmpc1.inc" ; ibm ascii font macros
 
 
 ; interrupts

@@ -35,6 +35,16 @@ $ gameboyemulator --open you.gb
 
 ![despite everything, it's still you](wiki-images/you.gif)
 
+## Goals
+  * other platform support
+  * bundle an emulator
+  * templates
+  * ruby dsl
+  * tools
+    * image converter
+  
+    
+
 ## Awesomeness
 
 All the cool parts are from other people
@@ -43,6 +53,3 @@ All the cool parts are from other people
 * [gameboy assembly language primer (galp)](http://www.devrs.com/gb/docs.php) - devrs.com
 
 
-## MIT License
-
-Copyright (C) 2016 Donald Hutchison <donaldhutchison.info>. Released under the MIT license.

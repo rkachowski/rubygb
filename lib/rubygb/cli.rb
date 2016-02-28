@@ -4,7 +4,8 @@ require 'fileutils'
 module Rubygb
   class CLI < Thor
     desc 'build FILENAME', 'attempt to assemble, link + fix FILENAME and create a gb rom from it'
-    option :no_fix, :type => :boolean
+    option :no_fix, type: :boolean, desc: 'skip header fixing'
+    option :output, desc: 'dir to put all build files'
     def build filename
       Rubygb.build filename, options
     end
