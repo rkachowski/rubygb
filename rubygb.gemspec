@@ -22,4 +22,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "pry-byebug", "~> 3"
 
   gem.add_runtime_dependency "thor", "~> 0.19"
+  gem.add_runtime_dependency "rmagick", "~> 2.15"
 end

@@ -32,5 +32,13 @@ module Rubygb
 
       puts "Done!"
     end
+
+    desc "convert FILE", "convert a png file to gameboy format"
+    option :output, :desc => "filename of converted file"
+    def convert image_file
+      img = Image.convert image_file
+
+      #save image as inc file
+    end
   end
 end
