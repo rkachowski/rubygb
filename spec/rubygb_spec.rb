@@ -15,5 +15,22 @@ describe Rubygb do
       assert File.exists?("basic.gb"), "gb file should have been created"
     end
   end
+
+  it "converts images correctly" do
+    image_path = File.join(File.dirname(__FILE__),"test_image.png")
+    result = Rubygb::Image.convert image_path
+
+
+    assert result.pixel_height == 8
+    assert result.pixel_width == 8
+    assert result.tile_width == 1
+    assert result.tile_height == 1
+    assert result.tile_data_size == 16
+
+
+
+    file =  Rubygb::ImageTemplates.image result
+    assert file.include?("DB $F0,$F0,$F0,$F0,$F0,$F0,$F0,$F0,$F0,$F0,$F0,$F0,$F0,$F0,$F0,$F0"), "result should contain correct tile data"
+  end
 end
 

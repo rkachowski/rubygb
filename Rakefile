@@ -22,7 +22,10 @@ end
 
 desc "Check for debug code"
 task :check_debug do
-  raise "you left in some stupid debug stuff" if system("grep -irl binding\.pry lib") or system(%(grep -irl -e 'require.*pry' lib))
+  output = `grep -irl binding\.pry lib`
+  abort "debug stuff still there " + output if $?.exitstatus == 0
+  output = `grep -irl -e 'require.*pry' lib`
+  abort "debug stuff still there " + output if $?.exitstatus == 0
 end
 
 

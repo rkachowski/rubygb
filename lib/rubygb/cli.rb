@@ -36,9 +36,13 @@ module Rubygb
     desc "convert FILE", "convert a png file to gameboy format"
     option :output, :desc => "filename of converted file"
     def convert image_file
-      img = Image.convert image_file
+      filename = options[:output]
+      filename ||= "#{image_file}.inc"
 
-      #save image as inc file
+      img = Image.convert image_file
+      file = ImageTemplates.image img
+
+      File.open(filename,"w") { |f| f << file}
     end
   end
 end
