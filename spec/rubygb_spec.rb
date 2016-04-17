@@ -66,8 +66,6 @@ describe Rubygb do
     assert result.tile_width == 2
     assert result.tile_height == 2
     assert result.tile_data_size == 16
-
-    puts  Rubygb::ImageTemplates.image(result)
   end
 end
 
