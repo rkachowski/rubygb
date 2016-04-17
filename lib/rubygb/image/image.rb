@@ -39,11 +39,21 @@ module Rubygb
         hsh
       end
 
+      #ghetto rgb to luma
+      luma = ->(col){ (col[0]*2 + col[2] + col[1]*3) / 6.0}
 
       #todo: assert palette is 4 colors at most
 
+      while color_palette.count < 4 do
+        pad_color = [32767,32767,32764 + color_palette.count]
+        color_palette[pad_color] = color_palette.count
+      end
+
+      #sort from darkest to lightest
+      sorted_palette = color_palette.keys.sort {|a,b| luma.call(b) - luma.call(a) }
+
       #replace colors with index in palette
-      converted.map! { |color| color_palette[color] }
+      converted.map! { |color| sorted_palette.index color }
 
       #calculate tiles
       tiles = []
@@ -76,6 +86,9 @@ module Rubygb
       (@tilepalette.values.count * 8 * 2)
     end
 
+    def tilemap_data_size
+      tile_width * tile_height
+    end
 
     def self.tile_to_binary tile
       output = []
@@ -90,7 +103,7 @@ module Rubygb
               b2 << "0"
             when 1
               b1 << "1"
-              b2 << "1"
+              b2 << "0"
             when 2
               b1 << "0"
               b2 << "1"
@@ -104,8 +117,7 @@ module Rubygb
       end
 
       output.map do |row|
-        #convert the row to hex and then reverse for little endian
-        sprintf("%02x",row.join.to_i(2)).reverse.upcase
+        sprintf("%02x",row.join.to_i(2)).upcase
       end
     end
   end

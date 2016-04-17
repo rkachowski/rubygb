@@ -8,7 +8,7 @@ module Rubygb
 
 
 ; Attributes
-#{image.name}_tilemap_size EQU $#{hex(image.tile_width * image.tile_height)}
+#{image.name}_tilemap_size EQU $#{hex(image.tilemap_data_size)}
 #{image.name}_tilemap_width EQU $#{hex(image.tile_width)}
 #{image.name}_tilemap_height EQU $#{hex(image.tile_height)}
 
@@ -33,6 +33,7 @@ module Rubygb
             slice << "00"
           end
         end
+
         result << "DB #{slice.map{|s| "$" + s}.join(",")}"
       end
       result.join "\n"
