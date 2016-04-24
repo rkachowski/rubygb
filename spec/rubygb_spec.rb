@@ -21,11 +21,11 @@ describe Rubygb do
     result = Rubygb::Image.convert image_path
 
 
-    assert result.pixel_height == 8
-    assert result.pixel_width == 8
-    assert result.tile_width == 1
-    assert result.tile_height == 1
-    assert result.tile_data_size == 16
+    assert_equal  8, result.pixel_height
+    assert_equal  8, result.pixel_width
+    assert_equal  1, result.tile_width
+    assert_equal  1, result.tile_height
+    assert_equal  16, result.tile_data_size
 
 
 
@@ -38,11 +38,11 @@ describe Rubygb do
     result = Rubygb::Image.convert image_path
 
 
-    assert result.pixel_height == 8
-    assert result.pixel_width == 8
-    assert result.tile_width == 1
-    assert result.tile_height == 1
-    assert result.tile_data_size == 16
+    assert_equal  8, result.pixel_height
+    assert_equal  8, result.pixel_width
+    assert_equal  1, result.tile_width
+    assert_equal  1, result.tile_height
+    assert_equal  16, result.tile_data_size
 
     file =  Rubygb::ImageTemplates.image result
     assert file.include?("$F0,$F0,$F0,$F0,$F0,$F0,$F0,$F0,$F0,$0F,$F0,$0F,$F0,$0F,$F0,$0F"), "result should contain correct tile data"
@@ -52,20 +52,48 @@ describe Rubygb do
     image_path = File.join(File.dirname(__FILE__),"test_16x8_4colors.png")
     result = Rubygb::Image.convert image_path
 
-    assert result.pixel_height == 8
-    assert result.pixel_width == 16
-    assert result.tile_width == 2
-    assert result.tile_height == 1
-    assert result.tile_data_size == 16
+    assert_equal  8, result.pixel_height
+    assert_equal  16, result.pixel_width
+    assert_equal  2, result.tile_width
+    assert_equal  1, result.tile_height
+    assert_equal  16, result.tile_data_size
 
     image_path = File.join(File.dirname(__FILE__),"test_16x16_4colors.png")
     result = Rubygb::Image.convert image_path
 
-    assert result.pixel_height == 16
-    assert result.pixel_width == 16
-    assert result.tile_width == 2
-    assert result.tile_height == 2
-    assert result.tile_data_size == 16
+    assert_equal  16, result.pixel_height
+    assert_equal  16, result.pixel_width
+    assert_equal  2, result.tile_width
+    assert_equal  2, result.tile_height
+    assert_equal  16, result.tile_data_size
+
+
+    image_path = File.join(File.dirname(__FILE__),"test_48x48.png")
+    result = Rubygb::Image.convert image_path
+
+    assert_equal  48, result.pixel_height 
+    assert_equal  48, result.pixel_width
+    assert_equal  6, result.tile_width
+    assert_equal  6, result.tile_height
+
+    assert_equal  5, result.tilepalette.count
+
+  end
+
+
+
+
+  it "converts a crazy failing image correctly" do
+    image_path = File.join(File.dirname(__FILE__),"test_posterised.png")
+    result = Rubygb::Image.convert image_path
+
+    assert_equal result.pixel_height, 144
+    assert_equal  160, result.pixel_width 
+    assert_equal  20, result.tile_width 
+    assert_equal  18, result.tile_height 
+
+    assert_equal  360, result.tilemap_data_size 
+    assert result.tile_data_size == 3488, "should create 3488 bytes of tile data"
   end
 end
 
